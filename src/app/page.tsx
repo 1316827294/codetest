@@ -5,19 +5,59 @@ import { Container } from '@/components/container';
 import { Button } from '@/components/ui/button';
 import { PricingSection } from '@/features/pricing/components/pricing-section';
 
+export const metadata = {
+  title: "Instant Twitter Banner Generator | Create Stunning Banners with AI",
+  description: "Generate beautiful Twitter banners instantly using DALL·E AI technology. Free to start, no design skills needed.",
+  openGraph: {
+    title: "Instant Twitter Banner Generator | Create Stunning Banners with AI",
+    description: "Generate beautiful Twitter banners instantly using DALL·E AI technology. Free to start, no design skills needed.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Twitter Banner Generator",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Instant Twitter Banner Generator | Create Stunning Banners with AI",
+    description: "Generate beautiful Twitter banners instantly using DALL·E AI technology. Free to start, no design skills needed.",
+    images: ["/twitter-image.png"],
+  },
+};
+
 export default async function HomePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Instant Twitter Banner Generator",
+    "description": "AI-powered tool for creating stunning Twitter banners instantly using DALL·E technology",
+    "applicationCategory": "DesignApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   return (
-    <div className='flex flex-col gap-8 lg:gap-32'>
+    <main className='flex flex-col gap-8 lg:gap-32'>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeroSection />
       <ExamplesSection />
       <PricingSection />
-    </div>
+    </main>
   );
 }
 
 function HeroSection() {
   return (
-    <section className='relative overflow-hidden lg:overflow-visible'>
+    <section aria-labelledby="hero-heading" className='relative overflow-hidden lg:overflow-visible'>
       <Container className='relative rounded-lg bg-black py-20 lg:py-[140px]'>
         <div className='relative z-10 flex flex-col gap-5 lg:max-w-xl lg:pl-8'>
           <div className='w-fit rounded-full bg-gradient-to-r from-[#616571] via-[#7782A9] to-[#826674] px-4 py-1 '>
@@ -25,7 +65,7 @@ function HeroSection() {
               Generate banners with DALL·E
             </span>
           </div>
-          <h1>Instantly craft stunning Twitter banners.</h1>
+          <h1 id="hero-heading">Instantly craft stunning Twitter banners.</h1>
           <Button asChild variant='sexy'>
             <Link href='/signup'>Get started for free</Link>
           </Button>
@@ -35,7 +75,7 @@ function HeroSection() {
         src='/hero-shape.png'
         width={867}
         height={790}
-        alt=''
+        alt="Decorative abstract background shape"
         className='absolute right-0 top-0 rounded-tr-lg'
         priority
         quality={100}
@@ -46,14 +86,14 @@ function HeroSection() {
 
 function ExamplesSection() {
   return (
-    <section className='flex flex-col gap-4 overflow-hidden rounded-lg bg-black py-8'>
+    <section aria-label="Examples of generated Twitter banners" className='flex flex-col gap-4 overflow-hidden rounded-lg bg-black py-8'>
       <div className='flex justify-center gap-4'>
         <Image
           className='flex-shrink-0'
           src='/example1.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Modern geometric Twitter banner design example'
           quality={100}
         />
         <Image
@@ -61,7 +101,7 @@ function ExamplesSection() {
           src='/example2.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Abstract blue and purple Twitter banner example'
           quality={100}
         />
         <Image
@@ -69,7 +109,7 @@ function ExamplesSection() {
           src='/example3.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Vibrant gradient Twitter banner example'
           quality={100}
         />
       </div>
@@ -79,7 +119,7 @@ function ExamplesSection() {
           src='/example4.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Minimalist landscape Twitter banner example'
           quality={100}
         />
         <Image
@@ -87,7 +127,7 @@ function ExamplesSection() {
           src='/example5.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Dark mode space-themed Twitter banner'
           quality={100}
         />
         <Image
@@ -95,7 +135,7 @@ function ExamplesSection() {
           src='/example6.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Neon futuristic Twitter banner design'
           quality={100}
         />
       </div>
@@ -105,7 +145,7 @@ function ExamplesSection() {
           src='/example7.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Nature-inspired Twitter banner example'
           quality={100}
         />
         <Image
@@ -113,7 +153,7 @@ function ExamplesSection() {
           src='/example8.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Pattern-based Twitter banner design'
           quality={100}
         />
         <Image
@@ -121,7 +161,7 @@ function ExamplesSection() {
           src='/example9.png'
           width={600}
           height={200}
-          alt='Example of a generated banner'
+          alt='Artistic painting style Twitter banner'
           quality={100}
         />
       </div>
